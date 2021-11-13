@@ -57,15 +57,41 @@ const mappedEmojis = emojis.map((emoji, index) => {
 // ["0 - 😬", "1 - ✅", "2 - 😬", "3 - 📋", "4 - 🍸", "5 - 🌟", "6 - 🍺"]
 // console.log(mappedEmojis); 
 
+const emojiMap = emojis.map((the_element, the_index, the_array) => {
+    return `${the_element} - ${the_index} - ${the_array}`
+})
+//  [
+//    '😬 - 0 - 😬,✅,😬,📋,🍸,🌟,🍺',
+//    '✅ - 1 - 😬,✅,😬,📋,🍸,🌟,🍺',
+//    '😬 - 2 - 😬,✅,😬,📋,🍸,🌟,🍺',
+//    '📋 - 3 - 😬,✅,😬,📋,🍸,🌟,🍺',
+//    '🍸 - 4 - 😬,✅,😬,📋,🍸,🌟,🍺',
+//    '🌟 - 5 - 😬,✅,😬,📋,🍸,🌟,🍺',
+//    '🍺 - 6 - 😬,✅,😬,📋,🍸,🌟,🍺',
+//  ]
+//
+// console.log(emojiMap)
+
 // The original array does not change. map returns a copy of the original
 // console.log(emojis) // ["😬", "✅", "😬", "📋", "🍸", "🌟", "🍺"]
 
-
 //// Reduce ////////////////////////////////////////////
-const arr = [1, 2, 3, 4]
+const arrayToReduce = [1, 2, 3, 4]
+const reducerFunction = (previousValue, currentValue) => {
+    console.log(`${previousValue} previousValue / ${currentValue} currentValue`)
+    return previousValue + currentValue
+}
+const accumulator = 0
 
-// 1 + 2 + 3 + 4
-// console.log(arr.reduce((acc, currentValue) => acc + currentValue)); // expected 10
+const reducedResult = arrayToReduce.reduce(reducerFunction, accumulator); // expected 10
+console.log(reducedResult)
+// console.log([1, 2, 3, 4].reduce((previousValue, currentValue) => previousValue + currentValue));
+// --> previousValue = 0 / currentValue = 1
+//     0 previousValue + 1 currentValue = 1 <- new previousValue
+//     1 previousValue + 2 currentValue = 3 <- new previousValue
+//     3 previousValue + 3 currentValue = 6 <- new previousValue
+//     6 previousValue + 4 currentValue = 10 <- return
+
 
 
 //// Spread operator ... ////////////////////////////////////////////
@@ -105,6 +131,6 @@ const arr = [1, 2, 3, 4]
 
 // Destructuring ////////////////////////////////////////////
 const address = [221, 'Baker Street', 'London'];
-const [ houseNo, , city ] = address;
+const [ houseNo, , city ] = address; // notice the white space between comas!
 
 // console.log(houseNo, city) // 221 'London'
